@@ -1,5 +1,5 @@
 set :application, 'eclipse-beta'
-set :repo_url, 'https://github.com/Cataclysm-Eclipse/cataclysm-beta'
+set :repo_url, 'https://github.com/Cataclysm-Eclipse/eclipse-beta'
 
 set :deploy_to, '/home/deploy/eclipse-beta'
 

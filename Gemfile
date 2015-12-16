@@ -51,3 +51,5 @@ gem 'capistrano-rails'
 gem 'capistrano-rbenv'
 
 gem 'font-awesome-rails'
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]

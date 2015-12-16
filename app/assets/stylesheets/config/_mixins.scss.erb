@@ -1,0 +1,92 @@
+@mixin color-transition($time) {
+	-webkit-transition: color $time ease-in-out;
+	-moz-transition: color $time ease-in-out;
+	transition: color $time ease-in-out;
+}
+
+@mixin button-transition($time) {
+	-webkit-transition: border-color $time ease-in-out, color $time ease-in-out;
+	-moz-transition: border-color $time ease-in-out, color $time ease-in-out;
+	transition: border-color $time ease-in-out, color $time ease-in-out;
+}
+
+@mixin background-transition($time) {
+	-webkit-transition: background-color $time ease-in-out;
+	-moz-transition: background-color $time ease-in-out;
+	transition: background-color $time ease-in-out;
+}
+
+@mixin box-sizing($format) {
+	-webkit-box-sizing: $format;
+	-moz-box-sizing: $format;
+	box-sizing: $format;
+}
+
+@mixin align-items($format) {
+	-webkit-align-items: $format;
+    -moz-align-items: $format;
+    -ms-align-items: $format;
+    align-items: $format;
+}
+
+@mixin display-flex() {
+	display:-webkit-box;
+	display:-webkit-flex;
+	display:-moz-box;
+	display:-moz-flex;
+	display:-ms-flexbox;
+	display:flex;
+}
+
+@mixin box-shadow {
+    -webkit-box-shadow: 0px 0px 10px 2.5px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 10px 2.5px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 2.5px rgba(0,0,0,0.5);
+}
+
+@mixin dark-box-shadow {
+    -webkit-box-shadow: 0 4px 2px -2px #333333;
+    -moz-box-shadow: 0 4px 2px -2px #333333;
+    box-shadow: 0 4px 2px -2px #333333;
+}
+
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+// BREAKPOINTS
+@import 'config/breakpoints';
+
+@mixin breakpoint($breakpoints, $media: all) {
+    @each $breakpoint in $breakpoints {
+        @if $breakpoint == large-desktop-range {
+            @media only #{$media} and (min-width: $large-desktop-container) { @content; }
+        }
+        @else if $breakpoint == desktop-range {
+            @media only #{$media} and (min-width: $desktop-container) and (max-width: $large-desktop-container - 0.062) { @content; }
+        }
+        @else if $breakpoint == tablet-range {
+            @media only #{$media} and (min-width: $tablet-container) and (max-width: $desktop-container - 0.062) { @content; }
+        }
+        @else if $breakpoint == large-mobile-range {
+            @media only #{$media} and (min-width: $large-mobile-container + 0.063) and (max-width: $tablet-container - 0.062) { @content; }
+        }
+        @else if $breakpoint == small-mobile-range {
+            @media only #{$media} and (max-width: $large-mobile-container) { @content; }
+        }
+        @else if $breakpoint == no-mobile {
+            @media only #{$media} and (min-width: $tablet-container) { @content; }
+        }
+        @else if $breakpoint == mobile-only {
+            @media only #{$media} and (max-width: $tablet-container - 0.062) { @content; }
+        }
+        @else if $breakpoint == desktop-only {
+            @media only #{$media} and (max-width: $desktop-container - 0.062) { @content; }
+        }
+    }
+
+}
